@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Foodie Files — Content That People Notice</title>
+<meta name="description" content="Foodie Files is a content creation and collaboration studio founded by Shyam Prasad — paid collaborations, branded campaigns and event coverage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --ivory:#FAF6EE;
+  --warm-white:#FFFDFB;
+  --cream-deep:#F1E9DA;
+  --charcoal:#241F1A;
+  --charcoal-soft:#5B5347;
+  --ember:#E2622C;
+  --ember-deep:#C24E1F;
+  --olive:#767A4C;
+  --line:#E6DDCB;
+  --line-strong:#D8CBAF;
+  --shadow: 0 20px 60px -30px rgba(36,31,26,0.35);
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Manrope', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --container: 1180px;
+  --edge: 20px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  background:var(--ivory);
+  color:var(--charcoal);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,video{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;}
+.container{max-width:var(--container);margin:0 auto;padding:0 var(--edge);}
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:12px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--ember-deep);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.eyebrow::before{content:"";width:16px;height:1px;background:var(--ember-deep);}
+h1,h2,h3{font-family:var(--font-display);margin:0;line-height:1.04;letter-spacing:-0.01em;}
+p{margin:0;line-height:1.6;}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:15px 26px;border-radius:999px;
+  font-family:var(--font-body);font-weight:700;font-size:14.5px;letter-spacing:0.02em;
+  border:1.5px solid transparent;transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+  white-space:nowrap;
+}
+.btn:active{transform:scale(.97);}
+.btn-solid{background:var(--charcoal);color:var(--ivory);}
+.btn-solid:hover{background:var(--ember-deep);}
+.btn-outline{background:transparent;color:var(--charcoal);border-color:var(--charcoal);}
+.btn-outline:hover{background:var(--charcoal);color:var(--ivory);}
+.btn-ember{background:var(--ember);color:#fff;}
+.btn-ember:hover{background:var(--ember-deep);}
+.btn-full{width:100%;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);}
+.reveal.is-visible{opacity:1;transform:translateY(0);}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1!important;transform:none!important;transition:none!important;}
+  .marquee-track{animation:none!important;}
+  *{scroll-behavior:auto!important;}
+}
+::selection{background:var(--ember);color:#fff;}
+:focus-visible{outline:2.5px solid var(--ember-deep);outline-offset:3px;}
+
+/* ============ HEADER ============ */
+header.site-header{
+  position:sticky;top:0;z-index:200;
+  background:rgba(250,246,238,0.86);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px var(--edge);max-width:var(--container);margin:0 auto;
+}
+.logo{font-family:var(--font-display);font-weight:600;font-size:20px;letter-spacing:0.01em;}
+.logo span{color:var(--ember);}
+nav.desktop-nav{display:none;gap:30px;align-items:center;}
+nav.desktop-nav a{font-size:14px;font-weight:600;letter-spacing:0.02em;position:relative;padding:4px 0;}
+nav.desktop-nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1.5px;background:var(--ember);transition:width .25s ease;}
+nav.desktop-nav a:hover::after{width:100%;}
+.header-actions{display:flex;align-items:center;gap:12px;}
+.header-actions .btn{padding:11px 18px;font-size:13px;}
+.hamburger{
+  display:flex;flex-direction:column;justify-content:center;gap:5px;
+  width:38px;height:38px;background:transparent;border:none;padding:0;
+}
+.hamburger span{display:block;width:22px;height:2px;background:var(--charcoal);border-radius:2px;transition:transform .3s ease, opacity .3s ease;margin:0 auto;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-nav{
+  max-height:0;overflow:hidden;background:var(--warm-white);
+  border-bottom:1px solid var(--line);
+  transition:max-height .4s cubic-bezier(.2,.7,.2,1);
+}
+.mobile-nav.open{max-height:420px;}
+.mobile-nav-inner{padding:8px var(--edge) 24px;display:flex;flex-direction:column;}
+.mobile-nav-inner a{padding:14px 0;font-size:17px;font-weight:600;border-bottom:1px solid var(--line);}
+.mobile-nav-inner .btn{margin-top:16px;}
+
+/* ============ WHATSAPP FLOAT ============ */
+.wa-float{
+  position:fixed;right:16px;bottom:20px;z-index:300;
+  width:56px;height:56px;border-radius:50%;
+  background:#25D366;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 12px 28px -8px rgba(37,211,102,0.55);
+  border:none;transition:transform .25s ease;
+}
+.wa-float:hover{transform:scale(1.08);}
+.wa-float svg{width:28px;height:28px;}
+
+/* ============ SECTION 01 — FOUNDER STORY ============ */
+.section{padding:64px 0;}
+.founder{padding-top:44px;}
+.founder-grid{display:flex;flex-direction:column;gap:32px;align-items:center;}
+.founder-portrait{
+  width:100%;max-width:280px;aspect-ratio:4/5;border-radius:20px;
+  background:linear-gradient(155deg,#3A322A 0%, #241F1A 55%, var(--ember-deep) 130%);
+  position:relative;overflow:hidden;box-shadow:var(--shadow);
+}
+.founder-portrait img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;
+}
+.founder-portrait .portrait-scrim{
+  position:absolute;left:0;right:0;bottom:0;height:46%;
+  background:linear-gradient(0deg, rgba(20,16,12,0.72) 0%, rgba(20,16,12,0.28) 55%, transparent 100%);
+}
+.founder-portrait .tag{
+  position:absolute;left:16px;bottom:14px;z-index:2;
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.08em;
+  color:rgba(250,246,238,0.92);text-transform:uppercase;
+}
+.founder-portrait .tag strong{display:block;font-family:var(--font-display);font-size:19px;letter-spacing:0;text-transform:none;font-weight:600;margin-bottom:2px;color:#fff;}
+.founder-copy{width:100%;}
+.founder-copy h1{font-size:clamp(38px,10vw,58px);margin-bottom:18px;}
+.founder-copy p{font-size:16.5px;color:var(--charcoal-soft);margin-bottom:14px;max-width:56ch;}
+.timeline{
+  margin-top:28px;display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);
+}
+.timeline-item{
+  display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);
+}
+.timeline-item .yr{font-family:var(--font-mono);font-weight:500;font-size:13px;color:var(--ember-deep);min-width:74px;}
+.timeline-item .lbl{font-size:15px;font-weight:600;}
+.timeline-item.today .yr{color:var(--olive);}
+
+/* ============ SECTION 02 — HERO ============ */
+.hero{
+  position:relative;padding:76px 0 68px;overflow:hidden;
+  background:linear-gradient(180deg, var(--warm-white), var(--ivory));
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.hero-eyebrow{text-align:center;margin-bottom:18px;display:flex;justify-content:center;}
+.hero h2.brand-mark{
+  font-size:clamp(52px,15vw,120px);text-align:center;font-weight:600;
+  letter-spacing:-0.02em;color:var(--charcoal);position:relative;z-index:2;
+}
+.hero .tagline{
+  text-align:center;font-family:var(--font-display);font-style:italic;font-weight:500;
+  font-size:clamp(18px,4.6vw,28px);color:var(--ember-deep);margin-top:6px;
+}
+.hero .subline{
+  text-align:center;font-family:var(--font-mono);font-size:12.5px;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--charcoal-soft);margin-top:16px;
+}
+.hero-actions{display:flex;flex-direction:column;gap:12px;margin-top:34px;padding:0 var(--edge);}
+.hero-blob{
+  position:absolute;width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle, rgba(226,98,44,0.18), transparent 70%);
+  top:-80px;right:-100px;z-index:1;
+}
+
+/* ============ SECTION 03 — FEATURED REELS ============ */
+.reels-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px;flex-wrap:wrap;gap:10px;}
+.reels-scroller{
+  display:flex;
+  gap:14px;
+
+  overflow-x:auto;
+  overflow-y:hidden;
+
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+
+  padding:6px var(--edge) 20px;
+  margin:0 calc(var(--edge) * -1);
+
+  -webkit-overflow-scrolling:touch;
+
+  scrollbar-width:none;
+
+  cursor:grab;
+  user-select:none;
+}
+
+.reels-scroller::-webkit-scrollbar{
+  display:none;
+}
+
+.reels-scroller.dragging{
+  cursor:grabbing;
+  scroll-snap-type:none;
+}
+
+.reel-card{
+  flex:0 0 230px;
+  width:230px;
+  scroll-snap-align:start;
+}
+.reel-card{
+  scroll-snap-align:start;flex:0 0 auto;width:62vw;max-width:230px;
+  border-radius:18px;overflow:hidden;background:var(--charcoal);position:relative;
+  aspect-ratio:9/15.5;box-shadow:var(--shadow);
+}
+.reel-card .reel-media{
+  position:absolute;inset:0;
+  background:linear-gradient(200deg, rgba(226,98,44,0.55), rgba(36,31,26,0.85)), 
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 14px);
+}
+.reel-card .play-icon{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,0.18);
+  border:1.5px solid rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;
+}
+.reel-card .play-icon svg{width:18px;height:18px;fill:#fff;margin-left:3px;}
+.reel-info{position:absolute;left:0;right:0;bottom:0;padding:16px 14px;color:#fff;}
+.reel-info .rbrand{font-weight:800;font-size:14px;}
+.reel-info .rtitle{font-size:12.5px;opacity:0.85;margin-top:2px;}
+.reel-info .rtype{
+  display:inline-block;margin-top:8px;font-family:var(--font-mono);font-size:10px;
+  letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,255,255,0.16);
+  padding:4px 9px;border-radius:999px;
+}
+
+/* ============ SECTION 04 — BRAND MARQUEE ============ */
+.marquee-section{
+  background:var(--charcoal);color:var(--ivory);padding:56px 0 60px;overflow:hidden;
+}
+.marquee-section .eyebrow{color:#E8A783;}
+.marquee-section .eyebrow::before{background:#E8A783;}
+.marquee-section h2{color:var(--ivory);font-size:clamp(28px,7vw,42px);margin-top:14px;max-width:14ch;}
+.marquee-wrap{margin-top:38px;display:flex;flex-direction:column;gap:6px;}
+.marquee-row{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.marquee-track{display:flex;width:max-content;gap:0;animation: scroll-left 46s linear infinite;}
+.marquee-row.row2 .marquee-track{animation-name: scroll-right;}
+.marquee-item{
+  font-family:var(--font-display);font-size:clamp(22px,6vw,40px);font-weight:500;
+  padding:10px 30px;white-space:nowrap;color:rgba(250,246,238,0.9);
+  border-right:1px solid rgba(250,246,238,0.18);
+}
+.marquee-row.row2 .marquee-item{color:rgba(250,246,238,0.55);}
+@keyframes scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes scroll-right{from{transform:translateX(-50%);}to{transform:translateX(0);}}
+
+/* ============ SECTION 05 — WHAT WE DO ============ */
+.services-list{margin-top:32px;border-top:1px solid var(--line);}
+.service-row{
+  border-bottom:1px solid var(--line);padding:26px 0;cursor:pointer;
+  transition:background .3s ease;
+}
+.service-row:hover{background:var(--cream-deep);}
+.service-row-head{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.service-num{font-family:var(--font-mono);font-size:13px;color:var(--ember-deep);}
+.service-title{font-family:var(--font-display);font-size:clamp(21px,5.5vw,30px);font-weight:600;flex:1;margin:0 14px;}
+.service-plus{
+  width:32px;height:32px;border-radius:50%;border:1.5px solid var(--charcoal);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;
+  transition:transform .35s ease, background .3s ease;
+}
+.service-plus::before,.service-plus::after{content:"";position:absolute;background:var(--charcoal);transition:transform .3s ease, background .3s ease;}
+.service-plus::before{width:12px;height:1.5px;}
+.service-plus::after{width:1.5px;height:12px;}
+.service-row.open .service-plus{background:var(--charcoal);transform:rotate(90deg);}
+.service-row.open .service-plus::before,.service-row.open .service-plus::after{background:var(--ivory);}
+.service-row.open .service-plus::after{transform:scaleY(0);}
+.service-body{
+  max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.2,.7,.2,1), padding .45s ease;
+}
+.service-row.open .service-body{max-height:420px;padding-top:16px;}
+.service-body-inner{padding-left:0;}
+.service-desc{font-size:15px;color:var(--charcoal-soft);max-width:56ch;margin-bottom:16px;}
+.service-thumbs{display:flex;gap:10px;overflow-x:auto;margin-bottom:16px;scrollbar-width:none;}
+.service-thumbs::-webkit-scrollbar{display:none;}
+.service-thumb{
+  flex:0 0 auto;width:110px;height:78px;border-radius:10px;
+  background:linear-gradient(140deg, var(--cream-deep), var(--line-strong));
+  display:flex;align-items:center;justify-content:center;
+}
+.service-thumb svg{width:22px;height:22px;opacity:0.4;}
+
+/* ============ SECTION 06 — PORTFOLIO ============ */
+.filter-bar{display:flex;gap:8px;overflow-x:auto;margin-top:26px;padding-bottom:6px;scrollbar-width:none;}
+.filter-bar::-webkit-scrollbar{display:none;}
+.filter-chip{
+  flex:0 0 auto;padding:10px 18px;border-radius:999px;border:1.5px solid var(--line-strong);
+  background:var(--warm-white);font-size:13.5px;font-weight:700;letter-spacing:0.01em;
+  transition:background .25s ease,color .25s ease, border-color .25s ease;
+}
+.filter-chip.active{background:var(--charcoal);color:var(--ivory);border-color:var(--charcoal);}
+.portfolio-grid{
+  display:grid;grid-template-columns:1fr;gap:16px;margin-top:26px;
+}
+.pf-card{
+  border-radius:18px;overflow:hidden;background:var(--warm-white);border:1px solid var(--line);
+  cursor:pointer;transition:transform .35s ease, box-shadow .35s ease;
+}
+.pf-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+.pf-card.hidden{display:none;}
+.pf-media{
+  aspect-ratio:4/3;position:relative;
+  background:linear-gradient(160deg, var(--pf-a,#E2622C), var(--pf-b,#241F1A));
+}
+.pf-card:nth-child(3n+1) .pf-media{aspect-ratio:1/1;}
+.pf-media::after{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(60deg, rgba(255,255,255,0.06) 0 2px, transparent 2px 16px);
+}
+.pf-cat{
+  position:absolute;top:12px;left:12px;font-family:var(--font-mono);font-size:10px;
+  letter-spacing:0.07em;text-transform:uppercase;background:rgba(255,255,255,0.85);
+  padding:5px 10px;border-radius:999px;color:var(--charcoal);
+}
+.pf-body{padding:16px 16px 18px;}
+.pf-brand{font-family:var(--font-display);font-size:19px;font-weight:600;}
+.pf-meta{display:flex;justify-content:space-between;margin-top:6px;font-size:12.5px;color:var(--charcoal-soft);}
+.pf-meta .pf-type{font-weight:700;color:var(--ember-deep);}
+
+/* project modal */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(36,31,26,0.7);backdrop-filter:blur(4px);
+  z-index:400;opacity:0;pointer-events:none;transition:opacity .3s ease;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.modal-overlay.open{opacity:1;pointer-events:auto;}
+.modal-sheet{
+  background:var(--warm-white);width:100%;max-width:560px;border-radius:22px 22px 0 0;
+  padding:26px var(--edge) 34px;max-height:88vh;overflow-y:auto;
+  transform:translateY(100%);transition:transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.modal-overlay.open .modal-sheet{transform:translateY(0);}
+.modal-close{
+  width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line-strong);
+  background:transparent;display:flex;align-items:center;justify-content:center;margin-left:auto;
+}
+.modal-media{
+  aspect-ratio:4/3;border-radius:16px;margin:14px 0 18px;
+  background:linear-gradient(160deg, var(--ember), var(--charcoal));
+}
+.modal-sheet h3{font-size:26px;margin-bottom:6px;}
+.modal-tags{display:flex;gap:8px;margin:10px 0 14px;flex-wrap:wrap;}
+.modal-tag{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.06em;background:var(--cream-deep);padding:6px 11px;border-radius:999px;}
+.modal-story{color:var(--charcoal-soft);font-size:15px;margin-bottom:20px;}
+
+/* ============ SECTION 07 — EFFECT ============ */
+.effect-section{background:var(--cream-deep);}
+.effect-grid{display:grid;grid-template-columns:1fr;gap:0;margin-top:32px;border-top:1px solid var(--line-strong);}
+.effect-item{padding:30px 0;border-bottom:1px solid var(--line-strong);text-align:left;}
+.effect-num{font-family:var(--font-display);font-size:clamp(44px,13vw,64px);font-weight:600;color:var(--ember-deep);line-height:1;}
+.effect-lbl{font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--charcoal-soft);margin-top:8px;}
+
+/* ============ SECTION 08 — SOCIAL PROOF ============ */
+.testi-scroller{display:flex;gap:16px;overflow-x:auto;margin-top:28px;padding-bottom:8px;scrollbar-width:none;}
+.testi-scroller::-webkit-scrollbar{display:none;}
+.testi-card{
+  flex:0 0 auto;width:82vw;max-width:340px;background:var(--warm-white);border:1px solid var(--line);
+  border-radius:18px;padding:24px;
+}
+.testi-quote{font-family:var(--font-display);font-style:italic;font-size:17px;line-height:1.5;color:var(--charcoal);}
+.testi-name{margin-top:16px;font-weight:700;font-size:14px;}
+.testi-biz{font-size:12.5px;color:var(--charcoal-soft);}
+.testi-card.placeholder{border-style:dashed;color:var(--charcoal-soft);display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;font-family:var(--font-mono);}
+
+/* ============ SECTION 09 — CALLBACK ============ */
+.callback-section{
+  background:var(--charcoal);color:var(--ivory);text-align:center;position:relative;overflow:hidden;
+}
+.callback-section h2{font-size:clamp(36px,10vw,64px);color:var(--ivory);}
+.callback-section .sub{margin-top:14px;font-size:16px;color:rgba(250,246,238,0.72);}
+.callback-section .btn-ember{margin-top:30px;}
+.cb-blob{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle, rgba(226,98,44,0.28), transparent 70%);bottom:-120px;left:-80px;}
+
+.form-overlay{
+  position:fixed;inset:0;background:rgba(36,31,26,0.75);z-index:500;
+  display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s ease;
+}
+.form-overlay.open{opacity:1;pointer-events:auto;}
+.form-sheet{
+  background:var(--warm-white);color:var(--charcoal);width:100%;max-width:560px;
+  border-radius:22px 22px 0 0;padding:26px var(--edge) 40px;max-height:92vh;overflow-y:auto;
+  transform:translateY(100%);transition:transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.form-overlay.open .form-sheet{transform:translateY(0);}
+.form-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+.form-head h3{font-size:24px;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--charcoal-soft);margin-bottom:7px;}
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 14px;border-radius:10px;border:1.5px solid var(--line-strong);
+  background:var(--ivory);font-family:var(--font-body);font-size:15px;color:var(--charcoal);
+}
+.field textarea{resize:vertical;min-height:90px;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--ember);outline:none;}
+.radio-group{display:flex;flex-wrap:wrap;gap:8px;}
+.radio-chip{position:relative;}
+.radio-chip input{position:absolute;opacity:0;inset:0;cursor:pointer;}
+.radio-chip span{
+  display:inline-block;padding:10px 14px;border-radius:999px;border:1.5px solid var(--line-strong);
+  font-size:13px;font-weight:600;background:var(--ivory);
+}
+.radio-chip input:checked + span{background:var(--charcoal);color:var(--ivory);border-color:var(--charcoal);}
+.thankyou{display:none;text-align:center;padding:30px 10px;}
+.thankyou.show{display:block;}
+.thankyou h3{font-size:30px;margin-bottom:10px;}
+.thankyou p{color:var(--charcoal-soft);font-size:15px;}
+.thankyou-icon{
+  width:60px;height:60px;border-radius:50%;background:var(--olive);margin:0 auto 18px;
+  display:flex;align-items:center;justify-content:center;
+}
+.thankyou-icon svg{width:26px;height:26px;stroke:#fff;}
+.integration-note{margin-top:18px;font-family:var(--font-mono);font-size:11px;color:var(--charcoal-soft);border-top:1px dashed var(--line-strong);padding-top:14px;}
+
+/* ============ FOOTER ============ */
+footer{background:var(--ivory);border-top:1px solid var(--line);padding:52px 0 26px;}
+.footer-top{display:flex;flex-direction:column;gap:26px;align-items:flex-start;}
+.footer-logo{font-family:var(--font-display);font-size:32px;font-weight:600;}
+.footer-tag{font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--charcoal-soft);margin-top:6px;}
+.footer-links{display:flex;flex-wrap:wrap;gap:20px;}
+.footer-links a{font-size:14px;font-weight:600;}
+.footer-wa{font-size:14px;font-weight:700;}
+
+/* ============ SHARED SOCIAL ICON ROW ============ */
+.social-slot{display:flex;gap:10px;align-items:center;}
+.social-slot a{
+  width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line-strong);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:background .25s ease, border-color .25s ease;background:var(--warm-white);
+}
+.social-slot a:hover{background:var(--charcoal);border-color:var(--charcoal);transform:translateY(-1px);}
+.social-slot svg{width:15px;height:15px;fill:var(--charcoal);transition:fill .25s ease;}
+.social-slot a:hover svg{fill:var(--ivory);}
+.footer-social{display:flex;gap:12px;}
+.footer-social a{width:38px;height:38px;}
+.footer-social svg{width:16px;height:16px;}
+/* header (desktop only) */
+.header-social{display:none;}
+@media (min-width:860px){
+  .header-social{display:flex;margin-right:6px;}
+  .header-social a{width:32px;height:32px;background:transparent;}
+  .header-social svg{width:14px;height:14px;}
+}
+/* mobile menu social row */
+.mobile-social{margin:6px 0 4px;padding-top:16px;border-top:1px solid var(--line);}
+.mobile-social .social-label{
+  display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--charcoal-soft);margin-bottom:12px;
+}
+/* hero follow row */
+.hero-social{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:32px;}
+.hero-social .social-label{
+  font-family:var(--font-mono);font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--charcoal-soft);
+}
+.footer-bottom{
+  margin-top:40px;padding-top:22px;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;gap:14px;font-size:12px;color:var(--charcoal-soft);
+}
+
+/* ============ DESKTOP ============ */
+@media (min-width:860px){
+  :root{--edge:40px;}
+  nav.desktop-nav{display:flex;}
+  .hamburger,.mobile-nav{display:none;}
+  .founder-grid{flex-direction:row;align-items:center;gap:64px;}
+  .founder-portrait{max-width:340px;flex-shrink:0;}
+  .hero-actions{flex-direction:row;justify-content:center;}
+  .hero-actions .btn{width:auto;}
+  .portfolio-grid{grid-template-columns:repeat(3,1fr);gap:22px;}
+  .effect-grid{grid-template-columns:repeat(3,1fr);}
+  .effect-item{border-right:1px solid var(--line-strong);padding:36px 30px;}
+  .effect-item:last-child{border-right:none;}
+  .footer-top{flex-direction:row;justify-content:space-between;align-items:flex-start;}
+  .footer-bottom{flex-direction:row;justify-content:space-between;align-items:center;}
+  .modal-sheet,.form-sheet{border-radius:22px;margin-bottom:40px;}
+  .modal-overlay,.form-overlay{align-items:center;}
+}
+@media (min-width:1080px){
+  .service-row{padding:32px 0;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#top" class="logo">FOODIE <span>FILES</span></a>
+    <nav class="desktop-nav">
+      <a href="#top">Home</a>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#story">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <div class="social-slot header-social" id="headerSocial"></div>
+      <a class="btn btn-solid" href="https://wa.me/919895168095?text=Hi%20Foodie%20Files%2C%20I%20would%20like%20to%20discuss%20a%20collaboration." target="_blank" rel="noopener">WhatsApp Us</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-inner">
+      <a href="#top">Home</a>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#story">About</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-solid btn-full" href="https://wa.me/919895168095?text=Hi%20Foodie%20Files%2C%20I%20would%20like%20to%20discuss%20a%20collaboration." target="_blank" rel="noopener">WhatsApp Us</a>
+      <div class="mobile-social">
+        <span class="social-label">Follow Foodie Files</span>
+        <div class="social-slot" id="mobileSocial"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ FLOATING WHATSAPP ============ -->
+<a class="wa-float" href="https://wa.me/919895168095?text=Hi%20Foodie%20Files%2C%20I%20would%20like%20to%20discuss%20a%20collaboration." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.696 4.607 1.9 6.48L4 29l7.72-1.86A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.628 3 16.001 3zm0 21.8a9.76 9.76 0 0 1-4.98-1.37l-.357-.213-4.58 1.103 1.12-4.47-.233-.366A9.77 9.77 0 0 1 5.2 15C5.2 9.037 10.038 4.2 16 4.2S26.8 9.037 26.8 15 21.963 24.8 16 24.8zm5.34-7.32c-.293-.147-1.735-.856-2.004-.953-.27-.098-.466-.147-.663.147-.196.293-.76.953-.932 1.15-.172.196-.343.22-.636.073-.293-.147-1.238-.457-2.358-1.457-.872-.777-1.46-1.737-1.632-2.03-.172-.293-.018-.451.13-.598.133-.132.294-.343.44-.514.147-.172.196-.293.294-.489.098-.196.049-.367-.024-.514-.073-.147-.663-1.6-.909-2.19-.24-.575-.483-.497-.663-.506-.172-.008-.367-.01-.564-.01a1.09 1.09 0 0 0-.786.367c-.27.293-1.03 1.007-1.03 2.457 0 1.45 1.055 2.85 1.202 3.048.147.196 2.077 3.17 5.033 4.446.703.303 1.25.484 1.678.62.705.224 1.347.192 1.854.117.566-.084 1.735-.71 1.98-1.395.245-.685.245-1.273.172-1.395-.073-.122-.27-.196-.564-.343z"/></svg>
+</a>
+
+<div id="top"></div>
+
+<!-- ============ 01 — FOUNDER STORY ============ -->
+<section class="section founder" id="story">
+  <div class="container">
+    <div class="founder-grid">
+      <div class="founder-portrait reveal">
+        <!-- FOUNDER PHOTO — swap assets/shyam-prasad.jpg / .webp to update -->
+       <picture>
+    <img
+        src="images/sp.jpg.jpeg"
+        alt="Shyam Prasad, Founder of Foodie Files"
+        loading="eager"
+        class="founder-photo"
+    >
+</picture>
+        <div class="portrait-scrim"></div>
+        <div class="tag"><strong>Shyam Prasad</strong>Founder — Foodie Files</div>
+      </div>
+      <div class="founder-copy">
+        <span class="eyebrow reveal">The story behind Foodie Files</span>
+        <h1 class="reveal">Hi, I'm Shyam.</h1>
+        <p class="reveal">I started my content creation journey in 2020. In 2023, I created Foodie Files with a simple idea — to create content, discover interesting businesses and connect brands with audiences through authentic storytelling.</p>
+        <p class="reveal">What started as a content page has grown into a platform built around collaborations, branded campaigns, local businesses and stories worth sharing.</p>
+        <div class="timeline reveal">
+          <div class="timeline-item"><span class="yr">2020</span><span class="lbl">Content creation begins</span></div>
+          <div class="timeline-item"><span class="yr">2023</span><span class="lbl">Foodie Files begins</span></div>
+          <div class="timeline-item today"><span class="yr">Today</span><span class="lbl">400+ branded collaborations</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 — HERO ============ -->
+<section class="hero">
+  <div class="hero-blob"></div>
+  <div class="container">
+    <div class="hero-eyebrow"><span class="eyebrow reveal">Food · Brands · Stories</span></div>
+    <h2 class="brand-mark reveal">FOODIE FILES</h2>
+    <p class="tagline reveal">Content that people notice.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-outline reveal">Explore Our Work</a>
+      <a href="#contact" class="btn btn-solid reveal">Work With Us</a>
+    </div>
+    <div class="hero-social reveal">
+      <span class="social-label">Follow along</span>
+      <div class="social-slot" id="heroSocial"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 — FEATURED REELS ============ -->
+<section class="section" id="reels">
+  <div class="container">
+    <div class="reels-head">
+      <div>
+        <span class="eyebrow reveal">Fresh off the feed</span>
+        <h2 class="reveal" style="font-size:clamp(26px,7vw,38px);margin-top:10px;">Featured Reels</h2>
+      </div>
+    </div>
+  </div>
+  <div class="reels-scroller" id="reelsScroller"></div>
+</section>
+
+<!-- ============ 04 — BRAND MARQUEE ============ -->
+<section class="marquee-section">
+  <div class="container">
+    <span class="eyebrow reveal">Trusted collaborations</span>
+    <h2 class="reveal">Brands we've collaborated with</h2>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-row row1"><div class="marquee-track" id="marqueeRow1"></div></div>
+    <div class="marquee-row row2"><div class="marquee-track" id="marqueeRow2"></div></div>
+  </div>
+</section>
+
+<!-- ============ 05 — WHAT WE DO ============ -->
+<section class="section" id="services">
+  <div class="container">
+    <span class="eyebrow reveal">How we work with brands</span>
+    <h2 class="reveal" style="font-size:clamp(28px,7vw,42px);margin-top:10px;">What We Do</h2>
+    <div class="services-list" id="servicesList"></div>
+  </div>
+</section>
+
+<!-- ============ 06 — SELECTED WORK ============ -->
+<section class="section" id="work">
+  <div class="container">
+    <span class="eyebrow reveal">A look at the collaborations</span>
+    <h2 class="reveal" style="font-size:clamp(28px,7vw,42px);margin-top:10px;">Selected Work</h2>
+    <div class="filter-bar" id="filterBar"></div>
+    <div class="portfolio-grid" id="portfolioGrid"></div>
+  </div>
+</section>
+
+<!-- Project detail modal -->
+<div class="modal-overlay" id="projectModal">
+  <div class="modal-sheet">
+    <button class="modal-close" id="closeProjectModal" aria-label="Close">&times;</button>
+    <div class="modal-media" id="modalMedia"></div>
+    <h3 id="modalBrand"></h3>
+    <div class="modal-tags" id="modalTags"></div>
+    <p class="modal-story" id="modalStory"></p>
+    <a class="btn btn-solid btn-full" id="modalIgLink" target="_blank" rel="noopener">View on Instagram</a>
+  </div>
+</div>
+
+<!-- ============ 07 — EFFECT ============ -->
+<section class="section effect-section">
+  <div class="container">
+    <span class="eyebrow reveal">The Foodie Files effect</span>
+    <div class="effect-grid">
+      <div class="effect-item reveal">
+        <div class="effect-num" data-count="2023" data-static="true">2023</div>
+        <div class="effect-lbl">Foodie Files started</div>
+      </div>
+      <div class="effect-item reveal">
+        <div class="effect-num"><span data-count="6">0</span>+</div>
+        <div class="effect-lbl">Years content creation experience</div>
+      </div>
+      <div class="effect-item reveal">
+        <div class="effect-num"><span data-count="400">0</span>+</div>
+        <div class="effect-lbl">Branded collaborations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 — SOCIAL PROOF ============ -->
+<section class="section" id="proof">
+  <div class="container">
+    <span class="eyebrow reveal">Trusted by brands</span>
+    <h2 class="reveal" style="font-size:clamp(26px,7vw,38px);margin-top:10px;">What partners say</h2>
+  </div>
+  <div class="testi-scroller" id="testiScroller">
+    <div class="testi-card placeholder">Testimonial slot — CMS editable.<br>Add a real partner quote here.</div>
+    <div class="testi-card placeholder">Testimonial slot — CMS editable.<br>Add a real partner quote here.</div>
+  </div>
+</section>
+
+<!-- ============ 09 — CALLBACK ============ -->
+<section class="section callback-section" id="contact">
+  <div class="cb-blob"></div>
+  <div class="container">
+    <h2 class="reveal">Let's work together.</h2>
+    <p class="sub reveal">Have a collaboration in mind? Tell us about it.</p>
+    <button class="btn btn-ember reveal" id="openCallbackForm">Request a Callback</button>
+  </div>
+</section>
+
+<!-- Callback form modal -->
+<div class="form-overlay" id="callbackOverlay">
+  <div class="form-sheet">
+    <div class="form-head">
+      <h3>Request a Callback</h3>
+      <button class="modal-close" id="closeCallbackForm" aria-label="Close">&times;</button>
+    </div>
+
+    <form id="callbackForm">
+      <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" required></div>
+      <div class="field"><label for="cf-biz">Business / Brand Name</label><input id="cf-biz" name="business" type="text" required></div>
+      <div class="field"><label for="cf-phone">Phone Number</label><input id="cf-phone" name="phone" type="tel" required></div>
+      <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" required></div>
+      <div class="field"><label for="cf-loc">Location</label><input id="cf-loc" name="location" type="text" required></div>
+      <div class="field">
+        <label for="cf-type">Collaboration Type</label>
+        <select id="cf-type" name="collabType" required>
+          <option value="">Select one</option>
+          <option>Paid Collaboration</option>
+          <option>Non-Paid Collaboration</option>
+          <option>Branded Campaign</option>
+          <option>Event Coverage</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" required></textarea></div>
+      <div class="field">
+        <label>Preferred Callback Time</label>
+        <div class="radio-group">
+          <label class="radio-chip"><input type="radio" name="callbackTime" value="Morning" required><span>Morning</span></label>
+          <label class="radio-chip"><input type="radio" name="callbackTime" value="Afternoon"><span>Afternoon</span></label>
+          <label class="radio-chip"><input type="radio" name="callbackTime" value="Evening"><span>Evening</span></label>
+          <label class="radio-chip"><input type="radio" name="callbackTime" value="Any Time"><span>Any Time</span></label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-solid btn-full">Send Request</button>
+      <p class="integration-note">Integration-ready: this form posts JSON to FORM_ENDPOINT_URL (see &lt;script&gt;). Plug in a service such as Formspree, Netlify Forms or your own backend and it will email new enquiries automatically. Until an endpoint is configured, submissions open a pre-filled email to the Foodie Files inbox instead.</p>
+    </form>
+
+    <div class="thankyou" id="thankYou">
+      <div class="thankyou-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Thank you.</h3>
+      <p>Your request has been received. The Foodie Files team will get back to you shortly.</p>
+      <button class="btn btn-outline" id="closeThankYou" style="margin-top:20px;">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">FOODIE FILES</div>
+        <div class="footer-tag">Food · Brands · Stories</div>
+      </div>
+      <div class="footer-links">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#story">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <div class="social-slot footer-social" id="footerSocial"></div>
+        <div class="footer-wa" style="margin-top:14px;">WhatsApp: +91 98951 68095</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 FOODIE FILES. ALL RIGHTS RESERVED.</span>
+      <a href="#contact" class="btn btn-outline" style="padding:9px 18px;">Work With Us</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* =========================================================================
+   FOODIE FILES — CONTENT — EDIT HERE
+   Everything you'll want to update later (founder photo, reels, brands,
+   work items, social links) lives in this one clearly-marked block.
+   Add a new item to an array below — no other code needs to change.
+========================================================================= */
+
+// ---- Social links (real, verified) ----
+const IG_PROFILE = "https://www.instagram.com/foodie_files__/";
+const FB_PROFILE = "https://www.facebook.com/profile.php?id=100081040071338";
+const YT_CHANNEL = "https://youtube.com/@palakkad_foodie_files";
+
+// ---- WhatsApp ----
+const WHATSAPP_NUMBER = "919895168095"; // +91 9895168095
+const WHATSAPP_MESSAGE = "Hi Foodie Files, I would like to discuss a collaboration.";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
+// ---- Brand wall ("We Collaborated With") ----
+// Add a name here any time — it is auto-formatted to full uppercase for display.
+// NOTE: merged the original brand list with the corrected spellings supplied later
+// (mouzy → MOWCI, TEC Q → TECHQ, Pigeon → PGN, pizzahut → PIZZA HUT, citymart → CITY MART).
+const BRANDS = [
+  "KFC","LULU MALL","CITY MART","PREETHI","PIZZA HUT","MOUZY","TEC Q",
+  "CHENNAI MOBILES","MYG","NIKAMAL SLEEP","PIGEON","McDonald's","Emma Mattress",
+  "Fruitbae","Yamaha","Smartbazar","Kalayan","Cosmos","Magnus","Oxygen",
+  "Venus","CM Mobiles","Pizzarikotta","MOP","Alreem","Juicy"
+];
+
+// ---- Featured Reels ----
+// category, brand and instagramUrl are required. title is optional (leave "" to omit).
+const REELS = [
+  {
+    brand: "KFC",
+    title: "",
+    category: "Paid Collaboration",
+    video: "assets/reel/kfc.mp4",
+    instagramUrl: "https://www.instagram.com/reel/DRrXYsfk_90/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+  },
+  {
+    brand: "Lulu Mall",
+    title: "",
+    category: "Paid Collaboration",
+    video: "assets/reel/lulu.mp4",
+    instagramUrl: "https://www.instagram.com/reel/DTNU3DKk13g/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA=="
+  },
+  {
+    brand: "City Mart",
+    title: "",
+    category: "Paid Collaboration",
+    video: "assets/reel/citymart.mp4",
+    instagramUrl: "https://www.instagram.com/reel/C4skKMQREl4/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA=="
+  },
+  {
+    brand: "Preethi",
+    title: "",
+    category: "Paid Collaboration",
+    video: "assets/reel/preethi.mp4",
+    instagramUrl: "https://www.instagram.com/reel/C--CFLGSsqn/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA=="
+  },
+  {
+    brand: "Pizza Hut",
+    title: "",
+    category: "Paid Collaboration",
+    video: "assets/reel/pizza hut.mp4",
+    instagramUrl: "https://www.instagram.com/reel/DDJ83GHya-k/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA=="
+  },
+  {
+    brand: "Chennai Mobiles",
+    title: "",
+    category: "Paid Collaboration",
+    video: "assets/reel/chennai mobiles.mp4",
+    instagramUrl: ""
+  },
+  {
+    brand: "Nikamal Sleep",
+    title: "",
+    category: "Paid Collaboration",
+    video: "",
+    instagramUrl: ""
+  },
+  {
+    brand: "Emma Mattress",
+    title: "",
+    category: "Paid Collaboration",
+    video: "assets/reel/emma.mp4",
+    instagramUrl: ""
+  },
+  {
+    brand: "MYG",
+    title: "",
+    category: "Paid Collaboration",
+    video: "assets/reel/myg.mp4",
+    instagramUrl: ""
+  },
+  {
+    brand: "Smartbazaar",
+    title: "",
+    category: "Paid Collaboration",
+    video: "",
+    instagramUrl: ""
+  },
+  {
+    brand: "Fruitbae",
+    title: "",
+    category: "Paid Collaboration",
+    video: "assets/reel/fruitbae.mp4",
+    instagramUrl: ""
+  },
+  {
+    brand: "Venus",
+    title: "",
+    category: "Paid Collaboration",
+    video: "assets/reel/venus.mp4",
+    instagramUrl: ""
+  },
+  {
+    brand: "Oxygen",
+    title: "",
+    category: "Paid Collaboration",
+    video: "",
+    instagramUrl: ""
+  },
+  {
+    brand: "Kalyan",
+    title: "",
+    category: "Paid Collaboration",
+    video: "assets/reel/kalayan.mp4",
+    instagramUrl: ""
+  },
+  {
+    brand: "Cosmos",
+    title: "",
+    category: "Paid Collaboration",
+    video: "assets/reel/cosmos.mp4",
+    instagramUrl: ""
+  },
+  {
+    brand: "Yamaha",
+    title: "",
+    category: "Paid Collaboration",
+    video: "assets/reel/yamaha.mp4",
+    instagramUrl: ""
+  }
+];
+
+// ---- Selected Work / Portfolio ----
+// category: "paid" | "non-paid" | "branded" | "event" | "food" (a project can list more than one)
+// image / video / description / year are all optional — leave "" if you don't have them yet.
+const WORK = [
+  { brand:"KFC",             categories:["paid","food"],          image:"", video:"", instagramUrl:"https://www.instagram.com/reel/DRrXYsfk_90/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==", description:"", year:"2026" },
+  { brand:"Lulu Mall",       categories:["paid","branded"],       image:"", video:"", instagramUrl:"https://www.instagram.com/reel/DTNU3DKk13g/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==", description:"", year:"2026" },
+  { brand:"City Mart",       categories:["paid","non-paid"],      image:"", video:"", instagramUrl:"https://www.instagram.com/reel/C4skKMQREl4/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==", description:"", year:"2025" },
+  { brand:"Preethi",         categories:["paid","branded"],       image:"", video:"", instagramUrl:"https://www.instagram.com/reel/C--CFLGSsqn/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==", description:"", year:"2025" },
+  { brand:"Pizza Hut",       categories:["paid","food"],          image:"", video:"", instagramUrl:"https://www.instagram.com/reel/DDJ83GHya-k/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==", description:"", year:"2025" },
+  // The projects below don't have a specific reel link yet — they open the main
+  // Foodie Files Instagram profile until you add one. Fill in instagramUrl to fix.
+  { brand:"McDonald's",      categories:["branded","food"],       image:"", video:"", instagramUrl:"", description:"", year:"2024" },
+  { brand:"MYG",             categories:["branded"],              image:"", video:"", instagramUrl:"", description:"", year:"2024" },
+  { brand:"Chennai Mobiles", categories:["paid","branded"],       image:"", video:"", instagramUrl:"", description:"", year:"2023" },
+  { brand:"Nikamal Sleep",   categories:["non-paid","branded"],   image:"", video:"", instagramUrl:"", description:"", year:"2023" }
+  // Add more work by copying a line above.
+];
+
+/* ============ END OF EDITABLE CONTENT ============ */
+
+
+// ---- Social icon row (built once, reused in header / mobile menu / hero / footer) ----
+const SOCIALS = [
+  { name:"Instagram", url:IG_PROFILE, svg:'<svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.43.4a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.16.46.35 1.26.4 2.43.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.4 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.16-1.26.35-2.43.4-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.43-.4a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.16-.46-.35-1.26-.4-2.43C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.24-1.97.4-2.43a4.9 4.9 0 0 1 1.15-1.77A4.9 4.9 0 0 1 5.59 1.8c.46-.16 1.26-.35 2.43-.4C9.29 1.34 9.67 1.33 12 1.33m0 2c-3.14 0-3.5.01-4.73.07-.96.04-1.48.2-1.83.34-.46.18-.79.39-1.13.73-.34.34-.55.67-.73 1.13-.14.35-.3.87-.34 1.83-.06 1.23-.07 1.59-.07 4.73s.01 3.5.07 4.73c.04.96.2 1.48.34 1.83.18.46.39.79.73 1.13.34.34.67.55 1.13.73.35.14.87.3 1.83.34 1.23.06 1.59.07 4.73.07s3.5-.01 4.73-.07c.96-.04 1.48-.2 1.83-.34.46-.18.79-.39 1.13-.73.34-.34.55-.67.73-1.13.14-.35.3-.87.34-1.83.06-1.23.07-1.59.07-4.73s-.01-3.5-.07-4.73c-.04-.96-.2-1.48-.34-1.83a3 3 0 0 0-.73-1.13 3 3 0 0 0-1.13-.73c-.35-.14-.87-.3-1.83-.34C15.5 4.21 15.14 4.2 12 4.2m0 3.4a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8m0 2a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8m5.6-2.6a1.03 1.03 0 1 1-2.06 0 1.03 1.03 0 0 1 2.06 0"/></svg>' },
+  { name:"Facebook", url:FB_PROFILE, svg:'<svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.68l.4-3.1h-3.08V7.9c0-.9.25-1.5 1.53-1.5h1.63V3.63C15.96 3.5 15.03 3.4 13.94 3.4c-2.28 0-3.84 1.39-3.84 3.94v2.56H7.4v3.1h2.7v8z"/></svg>' },
+  { name:"YouTube", url:YT_CHANNEL, svg:'<svg viewBox="0 0 24 24"><path d="M21.6 7.2s-.21-1.49-.86-2.14c-.82-.86-1.74-.87-2.16-.92C15.6 4 12 4 12 4h-.01s-3.6 0-6.58.14c-.42.05-1.34.06-2.16.92C2.6 5.71 2.4 7.2 2.4 7.2S2.2 8.94 2.2 10.68v1.63c0 1.74.2 3.48.2 3.48s.2 1.49.85 2.14c.82.86 1.9.83 2.38.93 1.72.16 7.32.21 7.37.21 0 0 3.6-.01 6.58-.15.42-.05 1.34-.06 2.16-.92.65-.65.86-2.14.86-2.14s.2-1.74.2-3.48v-1.63c0-1.74-.2-3.48-.2-3.48zM9.94 14.5V8.9l5.4 2.81z"/></svg>' }
+];
+function socialIconsHTML(){
+  return SOCIALS.map(s=>`<a href="${s.url}" target="_blank" rel="noopener" aria-label="${s.name}">${s.svg}</a>`).join('');
+}
+function buildSocialSlots(){
+  ['headerSocial','mobileSocial','heroSocial','footerSocial'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.innerHTML = socialIconsHTML();
+  });
+}
+function wireWhatsAppLinks(){
+  document.querySelectorAll('a[href*="wa.me"]').forEach(a=>a.setAttribute('href', WHATSAPP_URL));
+}
+
+// ---- Brand marquee — every name forced to full uppercase for display ----
+function buildMarquee(){
+  const row1 = document.getElementById('marqueeRow1');
+  const row2 = document.getElementById('marqueeRow2');
+  const upper = BRANDS.map(b=>b.toUpperCase());
+  const half = Math.ceil(upper.length/2);
+  const setA = upper.slice(0, half);
+  const setB = upper.slice(half);
+  [ [row1,setA], [row2,setB] ].forEach(([el,list])=>{
+    const doubled = [...list, ...list]; // seamless loop
+    el.innerHTML = doubled.map(b=>`<span class="marquee-item">${b}</span>`).join('');
+  });
+}
+
+// ---- Services (What We Do) ----
+const SERVICES = [
+  {num:"01", title:"Paid Collaborations", desc:"Promotional content created for brands and businesses.", key:"paid"},
+  {num:"02", title:"Non-Paid Collaborations", desc:"Authentic features highlighting businesses and places that deserve attention.", key:"non-paid"},
+  {num:"03", title:"Branded Campaigns", desc:"Creative campaign content designed around a brand's objective.", key:"branded"},
+  {num:"04", title:"Event Coverage", desc:"Social-first coverage for events, launches and experiences.", key:"event"}
+];
+function buildServices(){
+  const wrap = document.getElementById('servicesList');
+  wrap.innerHTML = SERVICES.map((s,i)=>`
+    <div class="service-row" data-index="${i}" data-key="${s.key}">
+      <div class="service-row-head">
+        <span class="service-num">${s.num}</span>
+        <h3 class="service-title">${s.title}</h3>
+        <span class="service-plus"></span>
+      </div>
+      <div class="service-body">
+        <div class="service-body-inner">
+          <p class="service-desc">${s.desc}</p>
+          <div class="service-thumbs">
+            ${[1,2,3].map(()=>`<div class="service-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-4 4-3-3-6 6"/></svg></div>`).join('')}
+          </div>
+          <a class="btn btn-outline service-view-work" href="#work" data-key="${s.key}">View ${s.title} Work</a>
+          <a class="btn btn-solid" href="#contact" style="margin-left:10px;">Work With Foodie Files</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  wrap.querySelectorAll('.service-row-head').forEach(head=>{
+    head.addEventListener('click', ()=>head.closest('.service-row').classList.toggle('open'));
+  });
+  // Clicking "View Work" jumps to Selected Work and applies the matching filter.
+  wrap.querySelectorAll('.service-view-work').forEach(link=>{
+    link.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      setTimeout(()=>applyFilter(link.dataset.key, true), 300);
+    });
+  });
+}
+
+// ---- Selected Work / Portfolio ----
+const PALETTE = ["#E2622C","#767A4C","#C24E1F","#3A322A","#8A5A3A","#5B5347"];
+const FILTERS = [
+  {key:"all", label:"All"},
+  {key:"paid", label:"Paid"},
+  {key:"non-paid", label:"Non-Paid"},
+  {key:"food", label:"Food"},
+  {key:"branded", label:"Branded"},
+  {key:"event", label:"Event"}
+];
+function buildFilters(){
+  const bar = document.getElementById('filterBar');
+  bar.innerHTML = FILTERS.map((f,i)=>`<button class="filter-chip ${i===0?'active':''}" data-key="${f.key}">${f.label}</button>`).join('');
+  bar.querySelectorAll('.filter-chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>applyFilter(chip.dataset.key));
+  });
+}
+function buildPortfolio(){
+  const grid = document.getElementById('portfolioGrid');
+  grid.innerHTML = WORK.map((p,i)=>{
+    const a = PALETTE[i % PALETTE.length];
+    const b = PALETTE[(i+2) % PALETTE.length];
+    const bg = p.image ? `background-image:url('${p.image}');background-size:cover;background-position:center;` : `--pf-a:${a};--pf-b:${b};`;
+    return `
+    <div class="pf-card reveal" data-cats="${p.categories.join(',')}" data-index="${i}">
+      <div class="pf-media" style="${bg}">
+        <span class="pf-cat">${p.categories[0]}</span>
+      </div>
+      <div class="pf-body">
+        <div class="pf-brand">${p.brand}</div>
+        <div class="pf-meta"><span class="pf-type">${p.categories[0]}</span><span>${p.year||''}</span></div>
+      </div>
+    </div>`;
+  }).join('');
+  grid.querySelectorAll('.pf-card').forEach(card=>{
+    card.addEventListener('click', ()=>openProjectModal(WORK[card.dataset.index], card));
+  });
+}
+function applyFilter(key, scroll){
+  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.toggle('active', c.dataset.key === key));
+  document.querySelectorAll('.pf-card').forEach(card=>{
+    const cats = card.dataset.cats.split(',');
+    card.classList.toggle('hidden', key !== 'all' && !cats.includes(key));
+  });
+  if(scroll) document.getElementById('work').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// project modal
+const projectModal = document.getElementById('projectModal');
+function openProjectModal(p, cardEl){
+  document.getElementById('modalMedia').style.cssText = cardEl.querySelector('.pf-media').style.cssText;
+  document.getElementById('modalBrand').textContent = p.brand;
+  document.getElementById('modalTags').innerHTML = `<span class="modal-tag">${p.categories[0]}</span>${p.year ? `<span class="modal-tag">${p.year}</span>` : ''}`;
+  document.getElementById('modalStory').textContent = p.description || `Add the collaboration story for ${p.brand} here — what Foodie Files created and how it went. (Edit the "description" field in the WORK array.)`;
+  document.getElementById('modalIgLink').href = p.instagramUrl || IG_PROFILE;
+  projectModal.classList.add('open');
+}
+document.getElementById('closeProjectModal').addEventListener('click', ()=>projectModal.classList.remove('open'));
+projectModal.addEventListener('click', e=>{ if(e.target === projectModal) projectModal.classList.remove('open'); });
+
+// ---- Featured Reels — each card opens the real Instagram reel directly ----
+// ---- Featured Reels ----
+function buildReels() {
+  const wrap = document.getElementById("reelsScroller");
+
+  wrap.innerHTML = REELS.map(r => `
+    <a
+      class="reel-card"
+      href="${r.instagramUrl || '#'}"
+      ${r.instagramUrl ? 'target="_blank" rel="noopener noreferrer"' : ''}
+      ${!r.instagramUrl ? 'onclick="return false;"' : ''}
+    >
+
+      <div class="reel-media">
+
+        ${
+          r.video
+          ? `
+            <video
+              src="${r.video}"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+          `
+          : `
+            <div class="reel-placeholder"></div>
+          `
+        }
+
+        <div class="reel-play" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"></path>
+          </svg>
+        </div>
+
+      </div>
+
+      <div class="reel-info">
+        <div class="reel-brand">${r.brand}</div>
+
+        ${
+          r.title
+          ? `<div class="reel-title">${r.title}</div>`
+          : ''
+        }
+
+        <span class="rtype">${r.category}</span>
+      </div>
+
+    </a>
+  `).join("");
+}
+
+// ---- Scroll reveal ----
+function initReveal(){
+  const items = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){ entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+    });
+  }, {threshold:0.15});
+  items.forEach(el=>io.observe(el));
+}
+
+// ---- Number count-up ----
+function initCounters(){
+  const counters = document.querySelectorAll('[data-count]:not([data-static])');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.count, 10);
+      const start = performance.now();
+      const duration = 1400;
+      function tick(now){
+        const p = Math.min((now-start)/duration, 1);
+        const eased = 1 - Math.pow(1-p, 3);
+        el.textContent = Math.round(eased * target);
+        if(p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      io.unobserve(el);
+    });
+  }, {threshold:0.4});
+  counters.forEach(el=>io.observe(el));
+}
+
+// ---- Mobile nav ----
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileNav = document.getElementById('mobileNav');
+hamburgerBtn.addEventListener('click', ()=>{
+  const open = mobileNav.classList.toggle('open');
+  hamburgerBtn.classList.toggle('open', open);
+  hamburgerBtn.setAttribute('aria-expanded', open);
+});
+mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
+  mobileNav.classList.remove('open'); hamburgerBtn.classList.remove('open');
+}));
+
+// ---- Callback form ----
+// Integration-ready: set FORM_ENDPOINT_URL to a service like Formspree/Netlify Forms
+// e.g. "https://formspree.io/f/xxxxxxx" — once set, submissions POST as JSON automatically.
+const FORM_ENDPOINT_URL = "";
+const NOTIFY_EMAIL = "hello@foodiefiles.example"; // replace with the real Foodie Files business email
+
+const callbackOverlay = document.getElementById('callbackOverlay');
+const callbackForm = document.getElementById('callbackForm');
+const thankYou = document.getElementById('thankYou');
+
+document.getElementById('openCallbackForm').addEventListener('click', ()=>{
+  callbackOverlay.classList.add('open');
+  callbackForm.style.display = 'block';
+  thankYou.classList.remove('show');
+});
+document.getElementById('closeCallbackForm').addEventListener('click', ()=>callbackOverlay.classList.remove('open'));
+document.getElementById('closeThankYou').addEventListener('click', ()=>callbackOverlay.classList.remove('open'));
+callbackOverlay.addEventListener('click', e=>{ if(e.target === callbackOverlay) callbackOverlay.classList.remove('open'); });
+
+callbackForm.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(callbackForm).entries());
+  data.submittedAt = new Date().toISOString();
+  data.subject = `New Foodie Files Collaboration Enquiry — ${data.business}`;
+
+  let sent = false;
+  if(FORM_ENDPOINT_URL){
+    try{
+      const res = await fetch(FORM_ENDPOINT_URL, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(data)
+      });
+      sent = res.ok;
+    }catch(err){ sent = false; }
+  }
+  if(!sent){
+    // Fallback: open a pre-filled email so the enquiry still reaches the inbox.
+    const body = encodeURIComponent(
+      `Name: ${data.name}\nBusiness: ${data.business}\nPhone: ${data.phone}\nEmail: ${data.email}\nLocation: ${data.location}\nCollaboration Type: ${data.collabType}\nPreferred Callback Time: ${data.callbackTime||''}\nMessage: ${data.message}\nSubmitted: ${data.submittedAt}`
+    );
+    window.open(`mailto:${NOTIFY_EMAIL}?subject=${encodeURIComponent(data.subject)}&body=${body}`, '_blank');
+  }
+  callbackForm.style.display = 'none';
+  thankYou.classList.add('show');
+});
+
+// ---- Init ----
+buildSocialSlots();
+buildMarquee();
+buildServices();
+buildFilters();
+buildPortfolio();
+buildReels();
+initReveal();
+initCounters();
+</script>
+</body>
+</html>
